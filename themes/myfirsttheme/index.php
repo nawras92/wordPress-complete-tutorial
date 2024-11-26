@@ -4,9 +4,10 @@
       <meta charset="UTF-8" /> 
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 			<title><?php bloginfo('name'); ?></title>
+    <link rel="stylesheet" href="./style.css">
      <?php wp_head(); ?>
   </head>
-	<body>
+    <body <?php body_class(); ?>>
     <h1>
       <a href="<?php echo home_url(); ?>">
       <?php bloginfo('name'); ?>
@@ -35,6 +36,8 @@
        <?php endif; ?>
 
     </main>
+
+<script src="./script.js"></script>
      
   <?php wp_footer(); ?>
 </body>
