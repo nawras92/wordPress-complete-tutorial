@@ -15,6 +15,21 @@
 
     <p><?php bloginfo('description'); ?></p>
     
+<div style="background: lightblue; padding: 10px; font-size:2rem">
+     <?php if (is_home()): ?>
+        <p> HOME</p>
+      <?php endif; ?>
+     <?php if (is_front_page()): ?>
+        <p> FRONT PAGE</p>
+      <?php endif; ?>
+     <?php if (is_single()): ?>
+        <p> Single</p>
+      <?php endif; ?>
+     <?php if (is_page()): ?>
+        <p> Page</p>
+      <?php endif; ?>
+
+</div>
     <main class="container">
       <?php if (have_posts()): ?>
            <?php while (have_posts()):

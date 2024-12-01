@@ -14,6 +14,21 @@
       </a>
     </h1>
     <p><?php bloginfo('description'); ?></p>
+
+
+<div style="background: lightblue; padding: 10px; font-size:2rem">
+     <?php if (is_home()): ?>
+        <p> HOME</p>
+      <?php endif; ?>
+     <?php if (is_category()): ?>
+        <p> category</p>
+      <?php endif; ?>
+
+
+</div>
+
+    
+
     
     <main class="container">
       <?php if (have_posts()): ?>
