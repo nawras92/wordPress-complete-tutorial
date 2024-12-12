@@ -6,6 +6,17 @@
  * Text Domain: lwn-lnmr
  * */
 
+/* add_action('lwn-lnmr-handle-actions', 'lwn_lnmr_handle_actions_callback2'); */
+/* function lwn_lnmr_handle_actions_callback2() */
+/* { */
+/*   echo 'hi from callback 2'; */
+/* } */
+/* add_action('lwn-lnmr-handle-actions', 'lwn_lnmr_handle_actions_callback3'); */
+/* function lwn_lnmr_handle_actions_callback3() */
+/* { */
+/*   echo 'hi from callback 3'; */
+/* } */
+
 // add menu
 add_action('admin_menu', 'lwn_lnmr_register_menus');
 function lwn_lnmr_register_menus()
@@ -35,6 +46,21 @@ function lwn_lnmr_register_menu_callback()
     'action' => 'add_cap',
   ];
   $add_cap_url = add_query_arg($add_cap_args, $admin_url);
+  $change_role_args = [
+    'page' => 'lwn-lnmr-plugin',
+    'action' => 'add_user_role',
+  ];
+  $change_role_url = add_query_arg($change_role_args, $admin_url);
+  $set_role_args = [
+    'page' => 'lwn-lnmr-plugin',
+    'action' => 'set_user_role',
+  ];
+  $set_role_url = add_query_arg($set_role_args, $admin_url);
+  $create_cap_args = [
+    'page' => 'lwn-lnmr-plugin',
+    'action' => 'create_cap',
+  ];
+  $create_cap_url = add_query_arg($create_cap_args, $admin_url);
   ?>
      <div class="wrap">
        <h1> <?php echo __('Roles & Permissions Plugin', 'lwn-lnmr'); ?></h1>
@@ -51,19 +77,31 @@ function lwn_lnmr_register_menu_callback()
                   <?php echo __('Add cap to teacher', 'lwn-lnmr'); ?>
               </a>
           </li>
+          <li>
+            <a href="<?php echo esc_url($change_role_url); ?>">
+                  <?php echo __('Change User Role', 'lwn-lnmr'); ?>
+              </a>
+          </li>
+          <li>
+            <a href="<?php echo esc_url($set_role_url); ?>">
+                  <?php echo __('Set User ROle', 'lwn-lnmr'); ?>
+              </a>
+          </li>
+          <li>
+            <a href="<?php echo esc_url($create_cap_url); ?>">
+                  <?php echo __('create custom cap', 'lwn-lnmr'); ?>
+              </a>
+          </li>
         </ul>
-
-
-       <?php lwn_lnmr_handle_actions(); ?>
- 
-  
+           <?php do_action('lwn-lnmr-handle-actions'); ?>
      </div>
 
 <?php
 }
 
+add_action('lwn-lnmr-handle-actions', 'lwn_lnmr_handle_actions_callback');
 /// Function to handle actions
-function lwn_lnmr_handle_actions()
+function lwn_lnmr_handle_actions_callback()
 {
   if (!isset($_GET['action'])) {
     return;
@@ -89,6 +127,42 @@ function lwn_lnmr_handle_actions()
       } else {
         echo '<p>Role not found</p>';
       }
+      break;
+    case 'add_user_role':
+      $user = get_user_by('id', 14);
+      if ($user) {
+        $user_roles = $user->roles;
+        if (!in_array('teacher', $user_roles)) {
+          $user->add_role('teacher');
+        }
+        echo '<pre>' . print_r($user_roles, true) . '</pre>';
+      } else {
+        echo 'The user not found';
+      }
+
+      break;
+    case 'set_user_role':
+      $user = get_user_by('id', 14);
+      if ($user) {
+        $user->set_role('teacher');
+
+        echo '<pre>' . print_r($user->roles, true) . '</pre>';
+      } else {
+        echo 'The user not found';
+      }
+
+      break;
+    case 'create_cap':
+      $role = get_role('teacher');
+      if ($role) {
+        $role->add_cap('lwn_manage_custom_data');
+        echo 'The cap has been created';
+        $role = get_role('teacher');
+        echo '<pre>' . print_r($role, true) . '</pre>';
+      } else {
+        echo 'The role not found';
+      }
+
       break;
     default:
       echo 'Action is Invalid';
