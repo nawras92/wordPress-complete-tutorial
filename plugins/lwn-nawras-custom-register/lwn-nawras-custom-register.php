@@ -31,12 +31,26 @@ function lwn_custom_register_shorcode_render($atts)
   $success_message = '';
   $wp_error = '';
   if (isset($_POST['custom_register_submit'])) {
+    $result = apply_filters('lwn_nawras_custom_register_process', $_POST);
+    if (is_wp_error($result)) {
+      $wp_error = $result->get_error_message();
+    } elseif (isset($result['success_message'])) {
+      $success_message = $result['success_message'];
+      // redirect
+      if (isset($result['redirect_url'])) {
+        wp_redirect($result['redirect_url']);
+        exit();
+      }
+    } elseif (!empty($result['errors'])) {
+      $errors = $result['errors'];
+    }
+    /* Start - do-action*/
+    /*
     $username = sanitize_text_field($_POST['username']);
     $password = sanitize_text_field($_POST['password']);
     $confirmPassword = sanitize_text_field($_POST['confirm-password']);
     $email = sanitize_email($_POST['email']);
     $redirect_url = esc_url($_POST['redirect_url']);
-
     // Check Password:  length / strength
     if ($password !== $confirmPassword) {
       $errors[] = __('Password not match', 'lwn-cr');
@@ -62,6 +76,7 @@ function lwn_custom_register_shorcode_render($atts)
         exit();
       }
     }
+   */
   }
 
   ob_start();
@@ -78,11 +93,15 @@ function lwn_custom_register_shorcode_render($atts)
   <p class="success-message"><?php echo $success_message; ?></p>
 			<div>
 				<label for="username"> <?php echo __('Username', 'lwn-cr'); ?></label>
-				<input type="text" name="username" id="username" required>
+        <input type="text" name="username" id="username" required value="<?php echo esc_attr(
+          $_POST['username'],
+        ); ?>">
       </div>
 			<div>
 				<label for="email"> <?php echo __('Email', 'lwn-cr'); ?></label>
-				<input type="email" name="email" id="email" required>
+        <input type="email" name="email" id="email" required value="<?php echo esc_attr(
+          $_POST['email'],
+        ); ?>">
       </div>
 			<div>
 				<label for="password"> <?php echo __('Password', 'lwn-cr'); ?></label>
@@ -112,10 +131,44 @@ function lwn_custom_register_shorcode_render($atts)
 }
 
 // Process Registration
-add_action(
-  'lwn_nawras_process_custom_registration',
-  'lwn_nawras_process_custom_registration_callback',
+add_filter(
+  'lwn_nawras_custom_register_process',
+  'lwn_nawras_custom_register_process_callback',
 );
-function lwn_nawras_process_custom_registration_callback()
+function lwn_nawras_custom_register_process_callback($data)
 {
+  $errors = [];
+  $result = [];
+  $username = sanitize_text_field($data['username']);
+  $password = sanitize_text_field($data['password']);
+  $confirmPassword = sanitize_text_field($data['confirm-password']);
+  $email = sanitize_email($data['email']);
+  $redirect_url = esc_url($data['redirect_url']);
+
+  // Check Password:  length / strength
+  if ($password !== $confirmPassword) {
+    $errors[] = __('Password not match', 'lwn-cr');
+  }
+  // check username
+  if (username_exists($username)) {
+    $errors[] = __('Username exists', 'lwn-cr');
+  }
+  // check email
+  if (email_exists($email)) {
+    $errors[] = __('email exists', 'lwn-cr');
+  }
+  if (empty($errors)) {
+    $user_id = wp_create_user($username, $password, $email);
+    if (is_wp_error($user_id)) {
+      return $user_id;
+    } else {
+      $result['success_message'] =
+        'The user has been created successfully! User Id is:  ' . $user_id;
+      $result['redirect_url'] = $redirect_url;
+      return $result;
+    }
+  } else {
+    $result['errors'] = $errors;
+    return $result;
+  }
 }
