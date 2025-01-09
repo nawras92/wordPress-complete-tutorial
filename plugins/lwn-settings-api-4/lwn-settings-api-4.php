@@ -8,6 +8,27 @@
 if (!defined('ABSPATH')) {
   exit();
 }
+
+// add shortcode
+add_shortcode('lwn_settings_api', 'lwn_sa4_render_shortcode');
+function lwn_sa4_render_shortcode()
+{
+  $colors = get_option('lwn_colors_option_name');
+  $heading_color = isset($colors['heading_color'])
+    ? $colors['heading_color']
+    : '#ffffff';
+  $heading_bg = isset($colors['heading_bg'])
+    ? $colors['heading_bg']
+    : '#ffffff';
+
+  $style = 'color: ' . $heading_color . ';  background: ' . $heading_bg . ';';
+
+  $output = "<p style='" . $style . "'>";
+  $output .= 'Hi world';
+  $output .= '</p>';
+  return $output;
+}
+
 // add menu
 add_action('admin_menu', 'lwn_sa4_register_menu');
 function lwn_sa4_register_menu()
