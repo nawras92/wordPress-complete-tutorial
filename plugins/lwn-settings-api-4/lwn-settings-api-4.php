@@ -147,3 +147,106 @@ function lwn_sa4_sanitize_colors($input)
 
   return $clean_data;
 }
+
+// Add sections
+add_action('admin_init', 'lwn_sa4_register_extra_settings_section');
+function lwn_sa4_register_extra_settings_section()
+{
+  // register setting- add sanitizer - todo
+  register_setting(
+    'lwn_colors_group_settings', // group name
+    'lwn_extra_settings_option_name', // option name
+    'lwn_sa4_sanitize_extra_settings',
+  );
+
+  // section
+  add_settings_section(
+    'lwn_extra_settings_section_id', //section id
+    __('Extra Options', 'lwn-sa4'), // Title
+    'lwn_sa4_render_extra_settings_section_cb', // callback for section description
+    'settings-api-4', // page slug
+  );
+
+  // Setting field- radio field
+  add_settings_field(
+    'enable_feature', // Field Id
+    __('Enable Feature', 'lwn-sa4'), // Field label
+    'lwn_sa4_render_enable_feature_field', //callback
+    'settings-api-4', // Page Slug
+    'lwn_extra_settings_section_id', // Section Id
+  );
+  // Setting field- Checkbox
+  add_settings_field(
+    'show_extra_option', // Field Id
+    __('Show Extra Option', 'lwn-sa4'), // Field label
+    'lwn_sa4_render_extra_option_field', //callback
+    'settings-api-4', // Page Slug
+    'lwn_extra_settings_section_id', // Section Id
+  );
+}
+// render callback
+function lwn_sa4_render_extra_settings_section_cb()
+{
+  echo '<p>' . __('Customize Extra options', 'lwn-sa4') . '</p>';
+}
+
+// enable feature field
+function lwn_sa4_render_enable_feature_field()
+{
+  $options = get_option('lwn_extra_settings_option_name');
+  $value = isset($options['enable_feature'])
+    ? $options['enable_feature']
+    : 'no';
+  ob_start();
+  ?>
+    <label>
+    <input type="radio" name="lwn_extra_settings_option_name[enable_feature]" value="yes" <?php checked(
+      $value,
+      'yes',
+    ); ?>  / >
+       <?php echo __('Yes'); ?>
+    </label>
+    <label>
+    <input type="radio" name="lwn_extra_settings_option_name[enable_feature]" value="no" <?php checked(
+      $value,
+      'no',
+    ); ?> / >
+       <?php echo __('No'); ?>
+    </label>
+<?php echo ob_get_clean();
+}
+// enable feature field
+function lwn_sa4_render_extra_option_field()
+{
+  $options = get_option('lwn_extra_settings_option_name');
+  $value = isset($options['show_extra_option'])
+    ? $options['show_extra_option']
+    : '';
+  ob_start();
+  ?>
+    <label>
+    <input type="checkbox" name="lwn_extra_settings_option_name[show_extra_option]" value="1" <?php checked(
+      $value,
+      '1',
+    ); ?>  / >
+       <?php echo __('Check this option'); ?>
+    </label>
+<?php echo ob_get_clean();
+}
+
+// sanitize extra options
+function lwn_sa4_sanitize_extra_settings($input)
+{
+  $clean_data = [];
+  // sanitize the radio button
+  if (isset($input['enable_feature'])) {
+    $clean_data['enable_feature'] =
+      $input['enable_feature'] === 'yes' ? 'yes' : 'no';
+  }
+  /* sanitize the checkbox */
+  $clean_data['show_extra_option'] = isset($input['show_extra_option'])
+    ? '1'
+    : '0';
+
+  return $clean_data;
+}
