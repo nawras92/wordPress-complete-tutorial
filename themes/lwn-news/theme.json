@@ -1,0 +1,30 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 2,
+  "settings": {
+    "appearanceTools": true,
+    "useRootPaddingAwareAlignments": true,
+    "layout": {
+      "contentSize": "1200px",
+      "wideSize": "1400px"
+    },
+    "spacing": {
+      "padding": true,
+      "margin": true,
+      "blockGap": true
+    }
+  },
+  "styles": {
+    "spacing": {
+      "padding": {
+        "top": "0",
+        "bottom": "0",
+        "left": "10px",
+        "right": "10px"
+      }
+    }
+  },
+  "customTemplates": {},
+  "templateParts": {},
+  "patterns": []
+}
