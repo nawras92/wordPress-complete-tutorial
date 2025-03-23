@@ -1,30 +1,110 @@
 {
-  "$schema": "https://schemas.wp.org/trunk/theme.json",
-  "version": 2,
+  "$schema": "https://schemas.wp.org/wp/6.7/theme.json",
+  "customTemplates": [],
+  "patterns": [],
   "settings": {
     "appearanceTools": true,
-    "useRootPaddingAwareAlignments": true,
     "layout": {
       "contentSize": "1200px",
       "wideSize": "1400px"
     },
-    "spacing": {
-      "padding": true,
-      "margin": true,
-      "blockGap": true
+    "useRootPaddingAwareAlignments": true,
+    "color": {
+      "defaultPalette": false,
+      "defaultGradients": false,
+      "palette": [
+        {
+          "slug": "base",
+          "name": "Base",
+          "color": "#ffffff"
+        },
+        {
+          "slug": "contrast",
+          "name": "Contrast",
+          "color": "#2a2a2a"
+        },
+        {
+          "slug": "accent-1",
+          "name": "Accent 1",
+          "color": "#ac3e43"
+        },
+        {
+          "slug": "accent-2",
+          "name": "Accent 2",
+          "color": "#348d34"
+        }
+      ]
+    },
+    "typography": {
+      "fontFamilies": [
+        {
+          "fontFamily": "Zain",
+          "name": "Zain",
+          "slug": "zain",
+          "fontFace": [
+            {
+              "fontFamily": "Zain",
+              "fontWeight": "200",
+              "fontStyle": "normal",
+              "src": ["file:./assets/fonts/zain/zain-200.woff2"]
+            },
+            {
+              "fontFamily": "Zain",
+              "fontWeight": "300",
+              "fontStyle": "normal",
+              "src": ["file:./assets/fonts/zain/zain-300.woff2"]
+            },
+            {
+              "fontFamily": "Zain",
+              "fontWeight": "400",
+              "fontStyle": "normal",
+              "src": ["file:./assets/fonts/zain/zain-400.woff2"]
+            },
+            {
+              "fontFamily": "Zain",
+              "fontWeight": "700",
+              "fontStyle": "normal",
+              "src": ["file:./assets/fonts/zain/zain-700.woff2"]
+            },
+            {
+              "fontFamily": "Zain",
+              "fontWeight": "800",
+              "fontStyle": "normal",
+              "src": ["file:./assets/fonts/zain/zain-800.woff2"]
+            },
+            {
+              "fontFamily": "Zain",
+              "fontWeight": "900",
+              "fontStyle": "normal",
+              "src": ["file:./assets/fonts/zain/zain-900.woff2"]
+            },
+            {
+              "fontFamily": "Zain",
+              "fontWeight": "300",
+              "fontStyle": "italic",
+              "src": ["file:./assets/fonts/zain/zain-italic-300.woff2"]
+            },
+            {
+              "fontFamily": "Zain",
+              "fontWeight": "400",
+              "fontStyle": "italic",
+              "src": ["file:./assets/fonts/zain/zain-italic-400.woff2"]
+            }
+          ]
+        }
+      ]
     }
   },
   "styles": {
     "spacing": {
       "padding": {
-        "top": "0",
         "bottom": "0",
         "left": "10px",
-        "right": "10px"
+        "right": "10px",
+        "top": "0"
       }
     }
   },
-  "customTemplates": {},
-  "templateParts": {},
-  "patterns": []
+  "templateParts": [],
+  "version": 3
 }

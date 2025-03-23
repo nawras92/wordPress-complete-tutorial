@@ -1,1 +1,33 @@
-search result placeholder
+<!-- wp:template-part {"slug":"header","area":"uncategorized"} /-->
+
+<!-- wp:group {"tagName":"main","metadata":{"name":"Main Content"},"layout":{"type":"default"}} -->
+<main class="wp-block-group"><!-- wp:group {"metadata":{"name":"Main Content Inner"},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group"><!-- wp:query-title {"type":"search"} /-->
+
+<!-- wp:query {"queryId":5,"query":{"perPage":10,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":true,"taxQuery":null,"parents":[],"format":[]}} -->
+<div class="wp-block-query"><!-- wp:post-template -->
+<!-- wp:post-title {"isLink":true} /-->
+
+<!-- wp:post-date /-->
+<!-- /wp:post-template -->
+
+<!-- wp:query-pagination -->
+<!-- wp:query-pagination-previous /-->
+
+<!-- wp:query-pagination-numbers /-->
+
+<!-- wp:query-pagination-next /-->
+<!-- /wp:query-pagination -->
+
+<!-- wp:query-no-results -->
+<!-- wp:paragraph {"placeholder":"أضف نصوصًا أو مكوّنات من شأنها أن تظهر عندما لا يُرجع الاستعلام أي نتائج."} -->
+<p>عفوا لم نجد نتيجة لبحثك حاول مرة اخرى لتبحث من هنا</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:search {"label":"البحث","buttonText":"البحث"} /-->
+<!-- /wp:query-no-results --></div>
+<!-- /wp:query --></div>
+<!-- /wp:group --></main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","area":"uncategorized"} /-->
