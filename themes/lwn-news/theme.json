@@ -1,11 +1,24 @@
 {
   "$schema": "https://schemas.wp.org/wp/6.7/theme.json",
+  "version": 3,
+  "templateParts": [
+    {
+      "area": "header",
+      "name": "header",
+      "title": "Header"
+    },
+    {
+      "area": "footer",
+      "name": "footer",
+      "title": "Footer"
+    }
+  ],
   "customTemplates": [],
   "patterns": [],
   "settings": {
     "appearanceTools": true,
     "layout": {
-      "contentSize": "1200px",
+      "contentSize": "1000px",
       "wideSize": "1400px"
     },
     "useRootPaddingAwareAlignments": true,
@@ -36,6 +49,48 @@
       ]
     },
     "typography": {
+      "dropCap": false,
+      "textTransform": false,
+      "defaultFontSizes": false,
+      "customFontSize": false,
+      "lineHeight": true,
+      "fontWeight": true,
+      "letterSpacing": false,
+      "textDecoration": false,
+      "writingMode": false,
+
+      "fontSizes": [
+        {
+          "slug": "extra-small",
+          "size": "0.8rem",
+          "name": "XS"
+        },
+        {
+          "slug": "small",
+          "size": "0.9rem",
+          "name": "S"
+        },
+        {
+          "slug": "regular",
+          "size": "1rem",
+          "name": "Regular"
+        },
+        {
+          "slug": "large",
+          "size": "1.5rem",
+          "name": "L"
+        },
+        {
+          "slug": "extra-large",
+          "size": "2.5rem",
+          "name": "XL"
+        },
+        {
+          "slug": "extra-extra-large",
+          "size": "3.5rem",
+          "name": "XXL"
+        }
+      ],
       "fontFamilies": [
         {
           "fontFamily": "Zain",
@@ -104,7 +159,5 @@
         "top": "0"
       }
     }
-  },
-  "templateParts": [],
-  "version": 3
+  }
 }
