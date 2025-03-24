@@ -151,6 +151,9 @@
     }
   },
   "styles": {
+    "typography": {
+      "fontFamily": "Zain, sans-serif"
+    },
     "spacing": {
       "padding": {
         "bottom": "0",
