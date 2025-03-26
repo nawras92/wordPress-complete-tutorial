@@ -1,19 +1,33 @@
 <!-- wp:template-part {"slug":"header","area":"uncategorized"} /-->
 
-<!-- wp:group {"tagName":"main","metadata":{"name":"Main Content"},"layout":{"type":"default"}} -->
-<main class="wp-block-group"><!-- wp:group {"metadata":{"name":"Main Content Inner"},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group"><!-- wp:query {"queryId":8,"query":{"perPage":10,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":true},"metadata":{"categories":["posts"],"patternName":"core/query-small-posts","name":"صورة صغيرة وعنوان"}} -->
-<div class="wp-block-query"><!-- wp:post-template -->
-<!-- wp:columns {"verticalAlignment":"center"} -->
-<div class="wp-block-columns are-vertically-aligned-center"><!-- wp:column {"verticalAlignment":"center","width":"25%"} -->
-<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:25%"><!-- wp:post-featured-image {"isLink":true} /--></div>
-<!-- /wp:column -->
+<!-- wp:group {"tagName":"main","metadata":{"name":"Main Content"},"style":{"color":{"background":"#f3f3f3"},"spacing":{"padding":{"top":"20px","bottom":"20px"}}},"layout":{"type":"default"}} -->
+<main class="wp-block-group has-background" style="background-color:#f3f3f3;padding-top:20px;padding-bottom:20px"><!-- wp:group {"metadata":{"name":"Main Content Inner"},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group"><!-- wp:query {"queryId":1,"query":{"perPage":10,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":true,"taxQuery":null,"parents":[],"format":[]}} -->
+<div class="wp-block-query"><!-- wp:post-template {"layout":{"type":"grid","columnCount":3}} -->
+<!-- wp:group {"style":{"border":{"color":"#f3f3f3","width":"1px","radius":"4px"},"spacing":{"padding":{"top":"10px","bottom":"10px","left":"10px","right":"10px"}}},"backgroundColor":"base","layout":{"type":"constrained"}} -->
+<div class="wp-block-group has-border-color has-base-background-color has-background" style="border-color:#f3f3f3;border-width:1px;border-radius:4px;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px"><!-- wp:post-featured-image {"isLink":true,"aspectRatio":"4/3","style":{"border":{"radius":"4px"}}} /-->
 
-<!-- wp:column {"verticalAlignment":"center","width":"75%"} -->
-<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:75%"><!-- wp:post-title {"isLink":true} /--></div>
-<!-- /wp:column --></div>
-<!-- /wp:columns -->
-<!-- /wp:post-template --></div>
+<!-- wp:post-title {"isLink":true,"style":{"elements":{"link":{"color":{"text":"var:preset|color|accent-1"},":hover":{"color":{"text":"var:preset|color|contrast"}}}}},"textColor":"contrast"} /-->
+
+<!-- wp:group {"style":{"spacing":{"blockGap":"10px"}},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
+<div class="wp-block-group"><!-- wp:post-terms {"term":"category","separator":" ","className":"is-style-custom-pill-term"} /-->
+
+<!-- wp:post-date {"style":{"color":{"text":"#877c7cd9"},"elements":{"link":{"color":{"text":"#877c7cd9"}}}},"fontSize":"extra-small"} /--></div>
+<!-- /wp:group --></div>
+<!-- /wp:group -->
+<!-- /wp:post-template -->
+
+<!-- wp:query-pagination {"className":"is-style-custom-query-pagination","style":{"elements":{"link":{"color":{"text":"var:preset|color|contrast"}}}},"textColor":"contrast","layout":{"type":"flex","justifyContent":"center"}} -->
+<!-- wp:query-pagination-previous /-->
+
+<!-- wp:query-pagination-next /-->
+<!-- /wp:query-pagination -->
+
+<!-- wp:query-no-results -->
+<!-- wp:paragraph {"placeholder":"أضف نصوصًا أو مكوّنات من شأنها أن تظهر عندما لا يُرجع الاستعلام أي نتائج."} -->
+<p>لا يوجد مقالات. الرجاء التحقق لاحقاً</p>
+<!-- /wp:paragraph -->
+<!-- /wp:query-no-results --></div>
 <!-- /wp:query --></div>
 <!-- /wp:group --></main>
 <!-- /wp:group -->

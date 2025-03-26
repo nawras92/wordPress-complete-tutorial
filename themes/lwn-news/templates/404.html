@@ -2,17 +2,25 @@
 
 <!-- wp:group {"tagName":"main","metadata":{"name":"Main Content"},"layout":{"type":"default"}} -->
 <main class="wp-block-group"><!-- wp:group {"metadata":{"name":"Main Content Inner"},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group"><!-- wp:heading -->
-<h2 class="wp-block-heading">الصفحة غير موجودة</h2>
+<div class="wp-block-group"><!-- wp:heading {"textAlign":"center","fontSize":"extra-large"} -->
+<h2 class="wp-block-heading has-text-align-center has-extra-large-font-size">الصفحة غير موجودة</h2>
 <!-- /wp:heading -->
 
-<!-- wp:paragraph -->
-<p>اذهب إلى الصفحة الرئيسية</p>
+<!-- wp:paragraph {"align":"center"} -->
+<p class="has-text-align-center">عذرا لا يمكن الوصول للصفحة المطلوبة</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:buttons -->
-<div class="wp-block-buttons"><!-- wp:button {"style":{"border":{"radius":"4px"}}} -->
-<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="/" style="border-radius:4px">الذهاب إلى الصفحة الرئيسية</a></div>
+<!-- wp:paragraph {"align":"center"} -->
+<p class="has-text-align-center">حاول البحث عما تريد باستخدام مربع البحث أو عد للصفحة الرئيسية</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:group {"layout":{"type":"constrained","contentSize":"600px"}} -->
+<div class="wp-block-group"><!-- wp:search {"label":"البحث","showLabel":false,"placeholder":"ابحث عن أي خبر تريد","buttonText":"البحث","buttonUseIcon":true,"style":{"border":{"radius":"4px","top":{"width":"0px","style":"none"},"right":{"width":"0px","style":"none"},"bottom":{"color":"#2a2a2a","width":"2px"},"left":{"width":"0px","style":"none"}}},"backgroundColor":"accent-1"} /--></div>
+<!-- /wp:group -->
+
+<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
+<div class="wp-block-buttons"><!-- wp:button {"backgroundColor":"contrast","style":{"border":{"radius":"4px"}}} -->
+<div class="wp-block-button"><a class="wp-block-button__link has-contrast-background-color has-background wp-element-button" href="/" style="border-radius:4px">الذهاب إلى الصفحة الرئيسية</a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>
 <!-- /wp:group --></main>

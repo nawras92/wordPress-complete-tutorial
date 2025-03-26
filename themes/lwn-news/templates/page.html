@@ -1,10 +1,14 @@
 <!-- wp:template-part {"slug":"header","area":"uncategorized"} /-->
 
 <!-- wp:group {"tagName":"main","metadata":{"name":"Main Content"},"layout":{"type":"default"}} -->
-<main class="wp-block-group"><!-- wp:group {"metadata":{"name":"Main Content Inner"},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group"><!-- wp:post-title {"level":1} /-->
+<main class="wp-block-group"><!-- wp:group {"metadata":{"name":"مجموعة العنوان"},"style":{"color":{"background":"#f0f0f0"}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group has-background" style="background-color:#f0f0f0"><!-- wp:post-title {"textAlign":"center","level":1,"style":{"spacing":{"padding":{"top":"40px","bottom":"40px"}},"elements":{"link":{"color":{"text":"var:preset|color|contrast"}}}},"textColor":"contrast","fontSize":"extra-large"} /--></div>
+<!-- /wp:group -->
 
-<!-- wp:post-content /--></div>
+<!-- wp:group {"metadata":{"name":"Main Content Inner"},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group"><!-- wp:group {"style":{"border":{"radius":"4px","width":"2px","color":"#f3f3f3"},"spacing":{"padding":{"top":"10px","bottom":"10px","left":"10px","right":"10px"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group has-border-color" style="border-color:#f3f3f3;border-width:2px;border-radius:4px;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px"><!-- wp:post-content /--></div>
+<!-- /wp:group --></div>
 <!-- /wp:group --></main>
 <!-- /wp:group -->
 
